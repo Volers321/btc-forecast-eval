@@ -1,6 +1,6 @@
 # btc-forecast-eval
 
-**Can you forecast Bitcoin?** Five forecasters — from "tomorrow = today" to ARIMA, linear models and gradient boosting (LSTM optional) — compared on two years of daily BTC/USD with walk-forward evaluation. Plus the three mistakes that make Bitcoin forecasts in tutorials look accurate, each measured next to its honest version.
+**Can you forecast Bitcoin?** Six forecasters — from "tomorrow = today" to ARIMA, linear models, gradient boosting and an LSTM — compared on two years of daily BTC/USD with walk-forward evaluation. Plus the three mistakes that make Bitcoin forecasts in tutorials look accurate, each measured next to its honest version.
 
 🇵🇱 *Czy da się przewidzieć kurs bitcoina? Uczciwe porównanie modeli na danych dziennych z testem kroczącym oraz trzy błędy, przez które prognozy z tutoriali wyglądają na trafne.*
 
@@ -8,8 +8,8 @@
 
 **Key results** (test period 2023-01-02 – 2025-01-22, 533 trading days)
 
-- **No model beats the naive forecast** ("tomorrow's price = today's"). The best, drift, is 0.2% worse on MAE; boosting is 2.4% worse, and that difference is significant.
-- **Direction is a coin flip:** 49.5–51.2% of days called correctly, vs 51.2% for "always up".
+- **No model beats the naive forecast** ("tomorrow's price = today's"). The best, drift, is 0.2% worse on MAE; the LSTM 0.6%; boosting 2.4%, and that difference is significant.
+- **Direction is a coin flip:** 49.0–51.2% of days called correctly, vs 51.2% for "always up".
 - **The same data with a leaky setup gives 72% accuracy;** the honest version 50.5%.
 - **Stock-to-Flow** fitted to 2019 (R² 0.91) predicted ~$895k for January 2025; the price was $104k.
 
@@ -34,8 +34,9 @@ Each model is refitted every 21 trading days on all data since 2014 that precede
 | ARIMA(1,0,1) on returns | 1144 | 1.006 | 0.998–1.014 | 0.28 | 49.5% | +399% |
 | ridge on lagged returns | 1145 | 1.007 | 0.997–1.015 | 0.64 | 49.7% | +303% |
 | gradient boosting | 1165 | 1.024 | 1.005–1.038 | 1.00 | 49.9% | +302% |
+| LSTM (30-day window, TensorFlow) | 1144 | 1.006 | 0.995–1.016 | 0.53 | 49.0% | +269% |
 
-"Always up" hits 51.2% of days; buy & hold returned +529%. Drift is always positive in a bull market, so its long/flat rule *is* buy & hold. Every model that tries to time the market does worse than holding, even before trading costs. The Diebold–Mariano test (squared return errors vs naive) finds no model significantly better at 5%.
+"Always up" hits 51.2% of days; buy & hold returned +529%. Drift is always positive in a bull market, so its long/flat rule *is* buy & hold. Every model that tries to time the market does worse than holding, even before trading costs. The neural network is no exception: the LSTM lands in the same place as ARIMA and ridge. The Diebold–Mariano test (squared return errors vs naive) finds no model significantly better at 5%.
 
 This is what an efficient, near-random-walk market looks like. A forecast that beats "tomorrow = today" by a large margin on daily data almost always has a leak.
 
