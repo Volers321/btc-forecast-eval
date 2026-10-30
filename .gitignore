@@ -7,4 +7,5 @@ __pycache__/
 
 # Price data is downloaded with `btcfe download` (stooq.pl), not redistributed here
 data/*.csv
+!data/.gitkeep
 results/cache/
