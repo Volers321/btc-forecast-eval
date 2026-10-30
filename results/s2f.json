@@ -1,0 +1,14 @@
+{
+ "fit_until": "2019-12-31",
+ "slope": 3.377986896308569,
+ "intercept": -2.486032427822381,
+ "r2_in_sample": 0.9124322687668394,
+ "months_out_of_sample": 61,
+ "out_of_sample_median_actual_over_model": 0.36204895561412015,
+ "out_of_sample_range_actual_over_model": [
+  0.06647398586195637,
+  1.5032699735417736
+ ],
+ "model_price_last_month": 894664.5401036246,
+ "actual_price_last_month": 104357.00000000006
+}

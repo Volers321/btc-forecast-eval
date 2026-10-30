@@ -1,0 +1,22 @@
+{
+ "same_day_features": {
+  "leaky_accuracy": 0.7237762237762237,
+  "honest_accuracy": 0.5052447552447552,
+  "majority_baseline": 0.5087412587412588
+ },
+ "price_level_r2": {
+  "model_r2": 0.9983054024363595,
+  "naive_r2": 0.9982968773870737,
+  "model_mae": 463.1869823160629,
+  "naive_mae": 457.5749038461539
+ },
+ "one_shot_arima": {
+  "arima_rmse": 35541.099767755404,
+  "last_price_rmse": 35531.16089789046,
+  "forecast_range": [
+   20135.862370888473,
+   20181.462641077323
+  ],
+  "test_days": 573
+ }
+}

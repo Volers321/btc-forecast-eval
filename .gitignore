@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Price data is downloaded with `btcfe download` (stooq.pl), not redistributed here
+data/*.csv
+results/cache/

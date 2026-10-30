@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "btc-forecast-eval"
+version = "0.1.0"
+description = "Can you forecast Bitcoin? Models compared with walk-forward evaluation, plus the leakage mistakes that make tutorials look accurate."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Wiktor Ligmanowski (Volers321)" }]
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.0",
+    "scikit-learn>=1.4",
+    "statsmodels>=0.14",
+    "matplotlib>=3.8",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+lstm = ["tensorflow>=2.16"]
+prophet = ["prophet>=1.1"]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+btcfe = "btcfe.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
